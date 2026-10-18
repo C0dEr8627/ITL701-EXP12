@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My AI Chatbot</title>
+    <meta name="description" content="Chat with our AI assistant">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e0e7ff, #fdf2f8, #dbeafe);
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 55px 20px 45px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed, #db2777);
+            border-radius: 0 0 35px 35px;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.25);
+        }
+
+        header h1 {
+            margin: 0 0 15px;
+            font-size: clamp(30px, 5vw, 46px);
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            margin: 0;
+            color: #f3e8ff;
+            font-size: 17px;
+        }
+
+        main {
+            max-width: 850px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, #ffffff, #f5f3ff);
+            padding: 35px;
+            border-radius: 22px;
+            border: 1px solid #ddd6fe;
+            box-shadow: 0 12px 35px rgba(79, 70, 229, 0.12);
+            line-height: 1.8;
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .welcome-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(124, 58, 237, 0.18);
+        }
+
+        .welcome-card h2 {
+            margin-top: 0;
+            color: #5b21b6;
+            font-size: 28px;
+        }
+
+        .welcome-card p {
+            color: #475569;
+            font-size: 16px;
+        }
+
+        .highlight {
+            color: #7c3aed;
+            font-weight: bold;
+        }
+
+        .chat-tip {
+            margin-top: 25px;
+            padding: 16px 20px;
+            border-left: 5px solid #8b5cf6;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #ede9fe, #fce7f3);
+            color: #5b21b6;
+        }
+
+        .status {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 7px 14px;
+            border-radius: 30px;
+            background: #dcfce7;
+            color: #166534;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .status::before {
+            content: "● ";
+            color: #22c55e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 28px 20px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        footer span {
+            color: #7c3aed;
+            font-weight: bold;
+        }
+
+        /* Dialogflow Messenger styling */
+        df-messenger {
+            z-index: 999;
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            --df-messenger-font-family: Arial, sans-serif;
+            --df-messenger-primary-color: #7c3aed;
+            --df-messenger-primary-color-contrast: #ffffff;
+            --df-messenger-chat-background: #ffffff;
+            --df-messenger-chat-window-width: 370px;
+            --df-messenger-chat-window-height: 520px;
+            --df-messenger-chat-bubble-size: 64px;
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 40px 16px 32px;
+                border-radius: 0 0 25px 25px;
+            }
+
+            main {
+                margin: 25px auto;
+                padding: 0 14px;
+            }
+
+            .welcome-card {
+                padding: 24px;
+            }
+
+            .welcome-card h2 {
+                font-size: 24px;
+            }
+
+            df-messenger {
+                --df-messenger-chat-window-width: 90vw;
+                --df-messenger-chat-window-height: 70vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>✨ My AI Assistant</h1>
+        <p>Your smart virtual assistant is ready to help!</p>
+    </header>
+
+    <main>
+        <section class="welcome-card">
+
+            <div class="status">Ready to chat</div>
+
+            <h2>👋 Welcome!</h2>
+
+            <p>
+                Have a question? Our <span class="highlight">AI assistant</span>
+                is here to help you anytime.
+            </p>
+
+            <p>
+                Click the chat icon in the bottom-right corner to start
+                a conversation and get answers to your questions.
+            </p>
+
+            <div class="chat-tip">
+                💬 <strong>Chat with AI:</strong>
+                Ask your question in the chat window and get responses
+                from your configured Dialogflow CX agent.
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        Powered by <span>Google Dialogflow CX</span> 💜
+    </footer>
+
+    <!-- Dialogflow Messenger -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+    <df-messenger
+        intent="WELCOME"
+        chat-title="DS_lab_dialogflow"
+        agent-id="a39b9663-bb92-4223-a1ef-a7b9f00d3132"
+        language-code="en">
+    </df-messenger>
+
+</body>
+</html>
